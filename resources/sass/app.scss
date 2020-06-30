@@ -1,1 +1,36 @@
-//
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.main-container{
+
+
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        flex: 1;
+    }
+
+    .content {
+        flex: 10;
+    }
+
+    .footer {
+        // height: $footer-height;
+
+        // align-self: flex-end;
+        // display: flex;
+        // align-items: center;
+        flex: 1;
+
+        // background-color: $blue;
+    }
+}
+
