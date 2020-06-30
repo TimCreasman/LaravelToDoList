@@ -14,7 +14,7 @@ class AddForeignkeysToTasks extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->unsignedBigInteger('priority_id'); //foreign key pointing to user
+            $table->unsignedBigInteger('task_priority_id'); //foreign key pointing to user
             $table->unsignedBigInteger('user_id'); //foreign key pointing to user
 
             $table->foreign('user_id')
@@ -22,10 +22,10 @@ class AddForeignkeysToTasks extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->foreign('priority_id')
+            $table->foreign('task_priority_id')
                 ->references('id')
-                ->on('priorities')
-                ->onDelete('cascade'); //delete all associated tasks if the priority is dropped
+                ->on('task_priorities')
+                ->onDelete('cascade'); //delete all associated tasks if the task_priority is dropped
 
         });
     }
@@ -38,7 +38,7 @@ class AddForeignkeysToTasks extends Migration
     public function down()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('priority_id');
+            $table->dropColumn('task_priority_id');
             $table->dropColumn('user_id');
         });
     }
