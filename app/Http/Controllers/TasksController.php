@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
-use App\TaskPriority;
+use App\Priority;
+use \Carbon\Carbon;
 
 class TasksController extends Controller
 {
@@ -22,7 +23,7 @@ class TasksController extends Controller
      */
     public function show(Task $task)
     {
-        return view('tasks.show', ['task' => $task]);
+        return view('tasks.show', ['task' => $task, 'priorities' => $task->priorities]);
     }
 
     /**
@@ -30,7 +31,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        return view('tasks.create', ['priorities' => TaskPriority::all()]);
+        return view('tasks.create', ['priorities' => Priority::all()]);
     }
 
 
@@ -39,7 +40,12 @@ class TasksController extends Controller
      */
     public function store()
     {
-        Task::create($this->validateTask());
+
+        $this->validateTask();
+
+        $task = new Task(request(['description']));
+        $task->save();
+        $task->priorities()->attach(request('priorities'));
         return redirect('/tasks');
     }
 
@@ -48,7 +54,7 @@ class TasksController extends Controller
      */
     public function edit(Task $task)
     {
-        return view('tasks.edit', ['task' => $task, 'priorities' => TaskPriority::all()]);
+        return view('tasks.edit', ['task' => $task, 'priorities' => Priority::all()]);
     }
 
     /**
@@ -59,7 +65,7 @@ class TasksController extends Controller
     {
 
         $task->update($this->validateTask());
-
+        $task->priorities()->sync(request('priorities'));
         return redirect($task->path());
 
     }
@@ -75,6 +81,14 @@ class TasksController extends Controller
         return redirect('/tasks');
     }
 
+    public function complete(Task $task)
+    {
+
+        $task->completed = Carbon::now();
+        $task->save();
+        return redirect('/tasks');
+    }
+
     /**
      * Validates the form data received from the frontend
      */
@@ -82,7 +96,7 @@ class TasksController extends Controller
     {
         return request()->validate([
             'description' => 'required',
-            'task_priority_id' => 'required'
+            'priorities' => 'exists:priorities,id'
         ]);
     }
 
