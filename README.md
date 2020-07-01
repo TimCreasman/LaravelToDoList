@@ -18,4 +18,6 @@ To run the Laravel application locally, run `php artisan serve` and click on the
 
 Throughout this rapid development I faced several challenges.
 
-One such challenge was in setting up the priorities of tasks. My first idea was to include an ENUM variable on the Task table. However, upon further inspection of the assignment's rules I noticed the priorities had to be on a separate table. This led to the creation of the TaskPriority table which the Task table would reference through a foreign key.
+One such challenge was in setting up the priorities of tasks. My first idea was to include an ENUM variable on the Task table. However, upon further inspection of the assignment's rules I noticed the priorities had to be on a separate table. This led to the creation of the Priority table and a priority_task pivot table.
+
+During this setup, I discovered the importance of a proper migration pipeline. In order to ensure that all tables would be generated before any relationships were made between tables, I setup an add foreign keys migration to run at the end of all other migrations. This way, all of the tables are created before they are referenced.

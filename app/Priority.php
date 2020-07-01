@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TaskPriority extends Model
+class Priority extends Model
 {
     //
     public function task(){

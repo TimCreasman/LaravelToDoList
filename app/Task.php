@@ -11,7 +11,7 @@ class Task extends Model
     protected $attributes = [
         'user_id' => 1
     ];
-    protected $fillable = ['description', 'task_priority_id', 'user_id'];
+    protected $fillable = ['description', 'user_id'];
 
     public function path()
     {
@@ -29,8 +29,8 @@ class Task extends Model
     /**
     * Gets the priority associated with the task
     */
-    public function priority()
+    public function priorities()
     {
-        return $this->hasOne(TaskPriority::class);
+        return $this->belongsToMany(Priority::class);
     }
 }

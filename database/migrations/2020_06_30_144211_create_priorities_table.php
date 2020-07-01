@@ -13,12 +13,19 @@ class CreatePrioritiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('task_priorities', function (Blueprint $table) {
+        Schema::create('priorities', function (Blueprint $table) {
             $table->id();
             $table->string('type');
             $table->timestamps();
         });
         //TODO add a seeder here to auto populate this table with priority types
+
+        //Create pivot table
+        Schema::create('priority_task', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -28,6 +35,7 @@ class CreatePrioritiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task_priorities');
+        Schema::dropIfExists('priorities');
+        Schema::dropIfExists('priority_task');
     }
 }

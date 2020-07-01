@@ -17,8 +17,8 @@
             required>
         </div>
         <div class="form-group">
-            <label for="task_priority_id">Priority</label>
-            <select name="task_priority_id" class="form-control" id="priority" required>
+            <label for="priorities[]">Priortities</label>
+            <select name="priorities[]" multiple class="form-control" id="priority" required>
                 @foreach ($priorities as $priority)
                     <option value={{$priority->id}}>{{$priority->type}}</option>
                 @endforeach
