@@ -17,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'LandingController@show');
 
 //Route to individual task page
-Route::get('/tasks/{task}', 'TasksController@show');
 //Route to list of tasks controller to show all tasks
-Route::get('/tasks', 'TasksController@showList');
+Route::get('/tasks', 'TasksController@index');
+Route::post('/tasks', 'TasksController@store');
+Route::get('/tasks/create', 'TasksController@create');
+Route::get('/tasks/{task}', 'TasksController@show');
+Route::get('/tasks/{task}/edit', 'TasksController@edit');
 
 //Route to login page
 Route::get('/login', 'LoginController@show');

@@ -2,6 +2,6 @@
 
 @section('content')
     <h1>
-        {{$task->name}}
+        {{$task->description}}
     </h1>
 @endsection

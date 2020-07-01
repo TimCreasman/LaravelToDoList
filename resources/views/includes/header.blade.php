@@ -5,7 +5,7 @@
         <a class="nav-link text-white" href="/tasks">View Tasks</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Link</a>
+        <a class="nav-link text-white" href="#">Login</a>
       </li>
     </ul>
 </nav>
