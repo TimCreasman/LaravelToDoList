@@ -24,6 +24,7 @@ Route::get('/tasks/create', 'TasksController@create');
 Route::get('/tasks/{task}', 'TasksController@show')->name('tasks.show');
 Route::get('/tasks/{task}/edit', 'TasksController@edit');
 Route::put('/tasks/{task}', 'TasksController@update');
+Route::delete('/tasks/{task}', 'TasksController@destroy');
 
 //Route to login page
 Route::get('/login', 'LoginController@show');

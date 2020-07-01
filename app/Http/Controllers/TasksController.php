@@ -18,7 +18,7 @@ class TasksController extends Controller
 
     /**
      * Renders a single task
-     * @param taskId the id of the task to display
+     * @param task the task to display
      */
     public function show(Task $task)
     {
@@ -53,6 +53,7 @@ class TasksController extends Controller
 
     /**
      * Save the submission of an edit to a task
+     * @param task the task to update
      */
     public function update(Task $task)
     {
@@ -63,12 +64,20 @@ class TasksController extends Controller
 
     }
 
-    //Deletes a task
-    public function destroy()
+    /**
+     * Removes a task from the database
+     * TODO: consider a soft delete
+     * @param task the task to delete
+     */
+    public function destroy(Task $task)
     {
-
+        $task->delete();
+        return redirect('/tasks');
     }
 
+    /**
+     * Validates the form data received from the frontend
+     */
     protected function validateTask()
     {
         return request()->validate([
