@@ -21,9 +21,10 @@ Route::get('/', 'LandingController@show');
 Route::get('/tasks', 'TasksController@index');
 Route::post('/tasks', 'TasksController@store');
 Route::get('/tasks/create', 'TasksController@create');
-Route::get('/tasks/{task}', 'TasksController@show');
+Route::get('/tasks/{task}', 'TasksController@show')->name('tasks.show');
 Route::get('/tasks/{task}/edit', 'TasksController@edit');
 Route::put('/tasks/{task}', 'TasksController@update');
+Route::delete('/tasks/{task}', 'TasksController@destroy');
 
 //Route to login page
 Route::get('/login', 'LoginController@show');

@@ -13,7 +13,7 @@
                     Completed:
                     <input type="checkbox" aria-label="Checkbox for following text input">
                 </div>
-                <a class="btn btn-primary ml-auto" href="/tasks/{{$task->id}}">
+                <a class="btn btn-primary ml-auto" href="{{$task->path()}}">
                     View more
                 </a>
 
