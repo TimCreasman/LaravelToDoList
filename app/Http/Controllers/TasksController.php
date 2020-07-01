@@ -35,8 +35,8 @@ class TasksController extends Controller
     public function store()
     {
         $task = new Task();
-        $priorityRef = TaskPriority::where('type', request('priority'))->first();
 
+        $priorityRef = TaskPriority::where('type', request('priority'))->first();
         $task->description = request('description');
         $task->task_priority_id = $priorityRef->id;
         //TODO change when users are implemented
@@ -48,14 +48,25 @@ class TasksController extends Controller
     }
 
     //Renders a form to edit a task
-    public function edit()
+    public function edit($taskId)
     {
-        return view('tasks.edit');
+        return view('tasks.edit', ['task' => Task::find($taskId), 'priorities' => TaskPriority::all()]);
     }
 
     //Save the submission of an edit to a task
-    public function update()
+    public function update($taskId)
     {
+        $task = Task::find($taskId);
+
+        $priorityRef = TaskPriority::where('type', request('priority'))->first();
+        $task->description = request('description');
+        $task->task_priority_id = $priorityRef->id;
+        //TODO change when users are implemented
+        $task->user_id = 1;
+
+        $task->save();
+
+        return redirect('/tasks/' . $task->id);
 
     }
 

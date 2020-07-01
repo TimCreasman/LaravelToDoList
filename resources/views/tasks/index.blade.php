@@ -13,7 +13,7 @@
                     Completed:
                     <input type="checkbox" aria-label="Checkbox for following text input">
                 </div>
-                <a class="btn btn-primary ml-auto" href="tasks/{{$task->id}}">
+                <a class="btn btn-primary ml-auto" href="/tasks/{{$task->id}}">
                     View more
                 </a>
 
@@ -22,7 +22,7 @@
         @endforeach
         <div class="card" style="width: 20em; margin: 2em;">
             <div class="d-flex align-items-center justify-content-center h-100">
-                <a class="btn btn-primary justify-content-center align-self-center" href="tasks/create">
+                <a class="btn btn-primary justify-content-center align-self-center" href="/tasks/create">
                     Create new task
                 </a>
             </div>
