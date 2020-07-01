@@ -16,7 +16,7 @@ To run the Laravel application locally, run `php artisan serve` and click on the
 
 ## Challenges Faced
 
-Throughout this rapid development I faced several challenges.
+Throughout this rapid development I faced a few challenges.
 
 One such challenge was in setting up the priorities of tasks. My first idea was to include an ENUM variable on the Task table. However, upon further inspection of the assignment's rules I noticed the priorities had to be on a separate table. This led to the creation of the Priority table and a priority_task pivot table.
 
