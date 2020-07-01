@@ -25,9 +25,11 @@ Next, open up the `.env` file (dupplicate the `.env.example` file and remove the
 
 Before running the application we need to setup the database.
 Run `php artisan migrate:fresh` followed by `php artisan db:seed` as seen below:
+
 ![Database Setup](https://media.giphy.com/media/Zb0rtZIUrxWgW6tab2/giphy.gif)
 
 To run the Laravel application locally, run `php artisan serve` and click on the provided link to view the app in your browser.
+
 ![Launch App](https://media.giphy.com/media/LPNVnzghjHNVlzf4sd/giphy.gif)
 
 <!-- ### Windows -->
