@@ -1,6 +1,6 @@
 # LaravelToDoList
 
-A basic todo list built with PHP (Laravel Framework) and Vue.JS
+A basic todo list built with PHP (Laravel Framework)
 
 ## Installations Instructions
 
@@ -8,11 +8,29 @@ To begin, clone this repository onto your system.
 
 ### Mac
 
-On a Mac, ensure php is installed: `brew install php`
+First, install the necessary dependencies using brew
 
-To run the Laravel application locally, run `php artisan serve` and click on the provided link to view the app.
+* PHP: `brew install php`
 
-### Windows
+* Node: `brew install node`
+
+* Composer: see <https://getcomposer.org/download/> for instructions
+
+* MySQL: `brew install mysql`
+
+* Laravel: `composer global require laravel/installer`
+
+With these installed, navigate to the project's root folder and run `composer install` to install the PHP dependencies.
+Next, open up the `.env` file (dupplicate the `.env.example` file and remove the .example extension) and replace your DB_DATABASE and DB_PASSWORD to the correct value to connect to your MySQL database.
+
+Before running the application we need to setup the database.
+Run `php artisan migrate:fresh` followed by `php artisan db:seed` as seen below:
+![Database Setup](https://media.giphy.com/media/Zb0rtZIUrxWgW6tab2/giphy.gif)
+
+To run the Laravel application locally, run `php artisan serve` and click on the provided link to view the app in your browser.
+![Launch App](https://media.giphy.com/media/LPNVnzghjHNVlzf4sd/giphy.gif)
+
+<!-- ### Windows -->
 
 ## Challenges Faced
 
