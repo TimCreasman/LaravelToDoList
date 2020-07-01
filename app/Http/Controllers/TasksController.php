@@ -13,7 +13,28 @@ class TasksController extends Controller
     /**
      * Renders a list of tasks
      */
-    public function index(){
+    public function index()
+    {
+
+        $tasks = Task::latest()->get();
+
+        if (request('priority'))
+        {
+
+            $tasks = Priority::where('type', request('priority'))->firstOrFail()->tasks;
+            return view('tasks.index', ['tasks' => $tasks]);
+        }
+
+        //If the user requests to get either completed or incomplete tasks
+        $completedRequest = request('completed');
+        if ($completedRequest == "true")
+        {
+            return view('tasks.index', ['tasks' => Task::whereNotNull('completed')->get()]);
+        } elseif ($completedRequest == "false")
+        {
+            return view('tasks.index', ['tasks' => Task::whereNull('completed')->get()]);
+        }
+
         return view('tasks.index', ['tasks' => Task::latest()->get()]);
     }
 
@@ -63,11 +84,14 @@ class TasksController extends Controller
      */
     public function update(Task $task)
     {
-
+        if (request()->completed) { //if the complete checkbox is on
+            $task->completed = Carbon::now();
+        } else {
+            $task->completed = NULL;
+        }
         $task->update($this->validateTask());
         $task->priorities()->sync(request('priorities'));
         return redirect($task->path());
-
     }
 
     /**

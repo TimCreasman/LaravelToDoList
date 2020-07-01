@@ -24,6 +24,14 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group">
+            <label for="completed">Toggle completion: </label>
+            <input
+                name="completed"
+                type="checkbox"
+                id="completed"
+                {{$task->completed ? 'checked' : ''}}>
+        </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 @endsection
