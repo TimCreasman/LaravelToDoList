@@ -43,3 +43,25 @@ Throughout this rapid development I faced a few challenges.
 One such challenge was in setting up the priorities of tasks. My first idea was to include an ENUM variable on the Task table. However, upon further inspection of the assignment's rules I noticed the priorities had to be on a separate table. This led to the creation of the Priority table and a priority_task pivot table.
 
 During this setup, I discovered the importance of a proper migration pipeline. In order to ensure that all tables would be generated before any relationships were made between tables, I setup an add foreign keys migration to run at the end of all other migrations. This way, all of the tables are created before they are referenced.
+
+## Screenshots of the App
+
+![Main task View](https://i.imgur.com/SGimQUR.png)
+
+Main task view with sorting options
+
+![Creating a new task](https://i.imgur.com/QNKLbo9.png)
+
+Creating a new task
+
+![More info](https://i.imgur.com/mpvyP7s.png)
+
+More task specific information
+
+![Edit a task](https://i.imgur.com/qe9IAhu.png)
+
+Edit a task
+
+![Complete a task](https://i.imgur.com/eKzBVNg.png)
+
+Complete a task
